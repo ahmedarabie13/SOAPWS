@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
+
+    <endpoint
+            name="Book"
+            implementation="com.arabie.webservices.BookServiceImpl"
+            url-pattern="/ws/book" >
+            <handler-chains xmlns="https://jakarta.ee/xml/ns/jakartaee">
+                <handler-chain>
+                    <handler>
+                        <handler-class>com.arabie.handler.MyLogicalHandler</handler-class>
+                    </handler>
+                    <handler>
+                        <handler-class>com.arabie.handler.MySoapHandler</handler-class>
+                    </handler>
+                </handler-chain>
+            </handler-chains>
+        </endpoint>
+</endpoints>
