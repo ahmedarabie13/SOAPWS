@@ -1,81 +1,70 @@
-##### insert book request 
-POST http://localhost:9191/SOAPLab0201/ws/book HTTP/1.1
+#### add method call
+POST http://localhost:9191/SOAPLab0301/ws/calculator HTTP/1.1
 Content-Type: text/xml
 
-<soap:Envelope
+<soap:Envelope 
     xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-    xmlns:bookService = "http://webservices.arabie.com/">
-    
+    >
+
     <soap:Body>
-        <bookService:addBook>
-            <arg0>"aaaa"</arg0>
-            <arg1>20</arg1>
-            <arg2>12.5</arg2>
-            <arg3>"aaaaa"</arg3>
-        </bookService:addBook>
-    </soap:Body>
-
-</soap:Envelope>
-####### select request
-
-POST http://localhost:9191/SOAPLab0101/ws/book HTTP/1.1
-Content-Type: text/xml
-
-<soap:Envelope
-    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-    xmlns:bookService = "http://webservices.arabie.com/">
-    
-    <soap:Body>
-        <bookService:getBook>
-            <arg0>15</arg0>
-        </bookService:getBook>
+        <jets:AddToNums xmlns:jets="myTargetNameSpace">
+            <arg0>2</arg0>
+            <arg1>4</arg1>
+        </jets:AddToNums>
     </soap:Body>
 
 </soap:Envelope>
 
-### delete request
-POST http://localhost:9191/SOAPLab0101/ws/book HTTP/1.1
+
+### test status method call 
+POST http://localhost:9191/SOAPLab0301/ws/calculator HTTP/1.1
 Content-Type: text/xml
 
-<soap:Envelope
+<soap:Envelope 
     xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-    xmlns:bookService = "http://webservices.arabie.com/">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    >
     
     <soap:Body>
-        <bookService:deleteBook>
-            <arg0>8</arg0>
-        </bookService:deleteBook>
+        <jets:testStatus xmlns:jets="http://webservices.arabie.com/">
+            <arg0 xsi:type="xsd:int">33</arg0>
+        </jets:testStatus>
     </soap:Body>
 
 </soap:Envelope>
-###  update book request
-POST http://localhost:9191/SOAPLab0101/ws/book HTTP/1.1
+
+### test status method call 
+POST http://localhost:9191/SOAPLab0301/ws/calculator HTTP/1.1
 Content-Type: text/xml
 
-<soap:Envelope
+<soap:Envelope 
     xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-    xmlns:bookService = "http://webservices.arabie.com/">
+    >
     
     <soap:Body>
-        <bookService:updateBook>
-            <arg0>6</arg0>
-            <arg1>ahmed</arg1>
-        </bookService:updateBook>
-    </soap:Body>
-
-</soap:Envelope>
-###
-
-POST http://localhost:9595/SOAP-D1/ws/calculator HTTP/1.1
-Content-Type: text/xml
-
-<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-    
-    <soap:Body>
-        <jets:add xmlns:jets="http://jets.iti.gov.eg/">
+        <jets:testStatus xmlns:jets="myTargetNameSpace">
             <arg0>33</arg0>
-            <arg1>33</arg1>
-        </jets:add>
+        </jets:testStatus>
+    </soap:Body>
+
+</soap:Envelope>
+### test echo method call 
+POST http://localhost:9191/SOAPLab0301/ws/calculator HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope 
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    >
+    # <soap:Header>
+    #     <jets:echo xmlns:jets="myTargetNameSpace">
+    #         <myParamName>33</myParamName>
+    #     </jets:echo>
+    # </soap:Header>
+    <soap:Body>
+        <jets:echo xmlns:jets="myTargetNameSpace">
+            <myParamName>33</myParamName>
+        </jets:echo>
     </soap:Body>
 
 </soap:Envelope>
